@@ -27,6 +27,7 @@ const App =() => {
             {user== 'admin'?<AdminDashboard/>:<EmployeeDashboard/>}
          {/*<EmployeeDashboard/>*/}
          {/*<AdminDashboard/>*/}
+
         </>
     )
 }
