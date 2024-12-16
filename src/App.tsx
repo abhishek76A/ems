@@ -8,10 +8,6 @@ import {AuthContext} from "./context/AuthProvider.tsx";
 
 const App =() => {
 
-
-
-
-
     const AuthData = useContext(AuthContext)
     console.log(AuthData)
 
