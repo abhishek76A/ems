@@ -6,7 +6,6 @@ import {getLocalStorage, setLocalStorage} from "./utils/localStorage.tsx";
 import employeeDashboard from "./component/Dashboard/EmployeeDashboard.tsx";
 import {AuthContext} from "./context/AuthProvider.tsx";
 
-
 const App =() => {
 
 
