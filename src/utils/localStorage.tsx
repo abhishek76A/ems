@@ -2,7 +2,7 @@ const employees = [
     {
         id: 2,
         email: "employee1@example.com",
-        password: "password123",
+        password: "123",
         tasks: [
             {
                 taskId: 1,
