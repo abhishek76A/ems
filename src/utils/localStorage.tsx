@@ -1,6 +1,9 @@
+// localStorage.clear()
+
 const employees = [
     {
         id: 2,
+        firstName: "Ravi", // Added firstName property
         email: "employee1@example.com",
         password: "123",
         tasks: [
@@ -27,11 +30,18 @@ const employees = [
                 failed: false,
             },
         ],
+        taskCounts: {
+            active: 2,
+            newTask: 1,
+            completed: 0,
+            failed: 0,
+        },
     },
     {
         id: 3,
+        firstName: "Priya", // Added firstName property
         email: "employee2@example.com",
-        password: "password123",
+        password: "123",
         tasks: [
             {
                 taskId: 3,
@@ -67,11 +77,18 @@ const employees = [
                 failed: false,
             },
         ],
+        taskCounts: {
+            active: 2,
+            newTask: 0,
+            completed: 2,
+            failed: 0,
+        },
     },
     {
         id: 4,
+        firstName: "Amit", // Added firstName property
         email: "employee3@example.com",
-        password: "password123",
+        password: "123",
         tasks: [
             {
                 taskId: 6,
@@ -96,9 +113,16 @@ const employees = [
                 failed: false,
             },
         ],
+        taskCounts: {
+            active: 2,
+            newTask: 1,
+            completed: 1,
+            failed: 0,
+        },
     },
     {
         id: 5,
+        firstName: "Sanya", // Added firstName property
         email: "employee4@example.com",
         password: "password123",
         tasks: [
@@ -136,9 +160,16 @@ const employees = [
                 failed: false,
             },
         ],
+        taskCounts: {
+            active: 2,
+            newTask: 2,
+            completed: 0,
+            failed: 1,
+        },
     },
     {
         id: 6,
+        firstName: "Vikram", // Added firstName property
         email: "employee5@example.com",
         password: "password123",
         tasks: [
@@ -165,28 +196,32 @@ const employees = [
                 failed: false,
             },
         ],
+        taskCounts: {
+            active: 2,
+            newTask: 1,
+            completed: 1,
+            failed: 0,
+        },
     },
 ];
 
 const admin = [
     {
         id: 1,
+        firstName: "Anil", // Added firstName property for admin
         email: "admin@example.com",
         password: "123",
     },
 ];
 
-export const setLocalStorage = ()=>{
-    localStorage.setItem('employees',JSON.stringify(employees))
-    localStorage.setItem('admin',JSON.stringify(admin))
-
-}
+export const setLocalStorage = () => {
+    localStorage.setItem("employees", JSON.stringify(employees));
+    localStorage.setItem("admin", JSON.stringify(admin));
+};
 
 export const getLocalStorage = () => {
-    const employees=JSON.parse(localStorage.getItem('employees'))
-    const admin=JSON.parse(localStorage.getItem('admin'))
+    const employees = JSON.parse(localStorage.getItem("employees"));
+    const admin = JSON.parse(localStorage.getItem("admin"));
 
-    return {employees,admin}
-
-
-}
+    return { employees, admin };
+};
