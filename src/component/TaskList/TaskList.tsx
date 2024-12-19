@@ -1,6 +1,7 @@
 import React from "react";
 
-const TaskList : React.FC = () => {
+const TaskList : React.FC = ({data}) => {
+    console.log(data);
 
 
     return (
