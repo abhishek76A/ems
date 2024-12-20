@@ -124,7 +124,7 @@ const employees = [
         id: 5,
         firstName: "Sanya", // Added firstName property
         email: "employee4@example.com",
-        password: "password123",
+        password: "123",
         tasks: [
             {
                 taskId: 8,
@@ -171,7 +171,7 @@ const employees = [
         id: 6,
         firstName: "Vikram", // Added firstName property
         email: "employee5@example.com",
-        password: "password123",
+        password: "123",
         tasks: [
             {
                 taskId: 11,
@@ -208,7 +208,7 @@ const employees = [
 const admin = [
     {
         id: 1,
-        firstName: "Anil", // Added firstName property for admin
+        firstName: "Admin", // Added firstName property for admin
         email: "admin@example.com",
         password: "123",
     },
