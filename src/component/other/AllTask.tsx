@@ -19,9 +19,9 @@ const AllTask: React.FC = () => {
 
                 </div>
                 <div className='h-[80%]'>
-                    {authData.employees.map(function (elem) {
+                    {authData.employees.map(function (elem,idx) {
                         return (
-                            <div className='border-2 border-emerald-500 mb-2 py-2 px-4 flex justify-between rounded '>
+                            <div key={idx} className='border-2 border-emerald-500 mb-2 py-2 px-4 flex justify-between rounded '>
                                 <h2 className='text-lg font-semibold w-1/5 text-white'>{elem.firstName}</h2>
                                 <h3 className='text-lg font-semibold w-1/5 text-blue-600'>{elem.taskCounts.newTask}</h3>
                                 <h3 className='text-lg font-semibold w-1/5 text-yellow-400'>{elem.taskCounts.active}</h3>
