@@ -5,24 +5,23 @@ import CompleteTask from "./CompleteTask.tsx";
 import FailedTask from "./FailedTask.tsx";
 
 const TaskList : React.FC = ({data}) => {
-    console.log(data);
 
     return (
         <div id='tasklist'
              className="h-[55%] py-5 overflow-x-auto  flex items-center justify-start gap-5  flex-nowrap w-full mt-10 ">
-            {data.tasks.map((elem) =>{
+            {data.tasks.map((elem,idx) =>{
 
                 if (elem.active){
-                    return <AcceptTask/>
+                    return <AcceptTask key={idx} data={elem}/>
                 }
                 if (elem.newTask){
-                    return <NewTask/>
+                    return <NewTask key={idx} data={elem}/>
                 }
                 if (elem.completed){
-                    return <CompleteTask/>
+                    return <CompleteTask key={idx} data={elem}/>
                 }
                 if (elem.failed){
-                    return <FailedTask/>
+                    return <FailedTask key={idx} data={elem}/>
                 }
             } )}
         </div>
