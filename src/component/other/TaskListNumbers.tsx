@@ -1,6 +1,21 @@
 import React from "react";
 
-const TaskListNumber: React.FC = ({data}) => {
+// Define the type for taskCounts
+interface TaskCounts {
+    newTask: number;
+    completed: number;
+    active: number;
+    failed: number;
+}
+
+// Define the type for the data prop
+interface TaskListNumberProps {
+    data: {
+        taskCounts: TaskCounts;
+    };
+}
+
+const TaskListNumber: React.FC<TaskListNumberProps> = ({ data }) => {
     console.log(data);
     return (
         <div className="flex flex-wrap mt-10 justify-between gap-5">

@@ -1,4 +1,4 @@
- // localStorage.clear()
+// localStorage.clear()
 
 const employees = [
     {
@@ -86,7 +86,7 @@ const employees = [
     },
     {
         id: 4,
-        firstName: "Amit", // Added firstName property
+        firstName: "Ayush", // Added firstName property
         email: "employee3@example.com",
         password: "123",
         tasks: [
@@ -169,7 +169,7 @@ const employees = [
     },
     {
         id: 6,
-        firstName: "Vikram", // Added firstName property
+        firstName: "Aniket", // Added firstName property
         email: "employee5@example.com",
         password: "123",
         tasks: [
@@ -224,4 +224,6 @@ export const getLocalStorage = () => {
     const admin = JSON.parse(localStorage.getItem("admin"));
 
     return { employees, admin };
+    localStorage.setItem()
+
 };

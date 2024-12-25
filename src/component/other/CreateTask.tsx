@@ -1,22 +1,47 @@
 import React, { useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthProvider";
 
-const CreateTask = () => {
+// Define interfaces for the user data and task
+interface Task {
+    title: string;
+    description: string;
+    date: string;
+    category: string;
+    active: boolean;
+    newTask: boolean;
+    failed: boolean;
+    completed: boolean;
+}
+
+interface TaskCounts {
+    newTask: number;
+    active: number;
+    completed: number;
+    failed: number;
+}
+
+interface User {
+    firstName: string;
+    tasks: Task[];
+    taskCounts: TaskCounts;
+}
+
+const CreateTask: React.FC = () => {
     const [userData, setUserData] = useContext(AuthContext);
 
-    const [taskTitle, setTaskTitle] = useState("");
-    const [taskDescription, setTaskDescription] = useState("");
-    const [taskDate, setTaskDate] = useState("");
-    const [assignTo, setAssignTo] = useState(""); // Corrected variable name
-    const [category, setCategory] = useState("");
+    const [title, settitle] = useState<string>("");
+    const [description, setdescription] = useState<string>("");
+    const [date, setdate] = useState<string>("");
+    const [assignTo, setAssignTo] = useState<string>("");
+    const [category, setCategory] = useState<string>("");
 
-    const submitHandler = (e) => {
+    const submitHandler = (e: React.FormEvent) => {
         e.preventDefault();
 
-        const newTask = {
-            taskTitle,
-            taskDescription,
-            taskDate,
+        const newTask: Task = {
+            title,
+            description,
+            date,
             category,
             active: false,
             newTask: true,
@@ -25,7 +50,7 @@ const CreateTask = () => {
         };
 
         if (Array.isArray(userData)) {
-            const updatedData = userData.map((user) => {
+            const updatedData = userData.map((user: User) => {
                 if (user.firstName === assignTo) {
                     return {
                         ...user,
@@ -46,9 +71,9 @@ const CreateTask = () => {
         }
 
         // Reset form fields
-        setTaskTitle("");
-        setTaskDescription("");
-        setTaskDate("");
+        settitle("");
+        setdescription("");
+        setdate("");
         setAssignTo("");
         setCategory("");
     };
@@ -64,8 +89,8 @@ const CreateTask = () => {
                         <div>
                             <h3 className="text-sm text-gray-300 mb-0.5">Task Title</h3>
                             <input
-                                value={taskTitle}
-                                onChange={(e) => setTaskTitle(e.target.value)}
+                                value={title}
+                                onChange={(e) => settitle(e.target.value)}
                                 className="text-sm text-white py-1 px-2 w-4/5 rounded outline-none bg-transparent border-[1px] border-gray-400 mb-4"
                                 type="text"
                                 placeholder="Make a UI design"
@@ -75,8 +100,8 @@ const CreateTask = () => {
                         <div>
                             <h3 className="text-sm text-gray-300 mb-0.5">Date</h3>
                             <input
-                                value={taskDate}
-                                onChange={(e) => setTaskDate(e.target.value)}
+                                value={date}
+                                onChange={(e) => setdate(e.target.value)}
                                 className="relative text-sm text-white py-1 px-2 w-4/5 rounded outline-none bg-transparent border-[1px] border-gray-400 mb-4 custom-date-picker"
                                 type="date"
                                 placeholder="dd/mm/yyyy"
@@ -108,8 +133,8 @@ const CreateTask = () => {
                     <div className="flex flex-col items-start w-2/5">
                         <h3 className="text-sm text-gray-400 mb-0.5">Description</h3>
                         <textarea
-                            value={taskDescription}
-                            onChange={(e) => setTaskDescription(e.target.value)}
+                            value={description}
+                            onChange={(e) => setdescription(e.target.value)}
                             className="w-full h-44 text-sm text-white py-2 px-4 rounded outline-none bg-transparent border-[1px] border-gray-400"
                         ></textarea>
                         <button
