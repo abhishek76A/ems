@@ -4,7 +4,7 @@ import NewTask from "./NewTask";
 import CompleteTask from "./CompleteTask";
 import FailedTask from "./FailedTask";
 
-// Define the type for individual task
+
 interface Task {
     title: string;
     category: string;

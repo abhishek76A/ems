@@ -4,8 +4,8 @@ import TaskListNumbers from "../other/TaskListNumbers";
 import TaskList from "../TaskList/TaskList";
 
 interface EmployeeDashboardProps {
-    data: any;  // You can specify a more precise type instead of 'any' if you know the structure of 'data'
-    changeUser: (user: string) => void;  // Assuming changeUser is a function that takes a string and returns nothing
+    data: any;
+    changeUser: (user: string) => void;
 }
 
 const EmployeeDashboard: React.FC<EmployeeDashboardProps> = ({ data, changeUser }) => {
