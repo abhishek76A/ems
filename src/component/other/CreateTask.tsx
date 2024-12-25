@@ -1,27 +1,63 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { AuthContext } from "../../context/AuthProvider";
 
-const CreateTask: React.FC = () => {
-    const [taskTitle, setTaskTitle] = useState('');
-    const [taskDescription, setTaskDescription] = useState('');
-    const [taskDate, setTaskDate] = useState('');
-    const [asignTo, setAsignTo] = useState('');
-    const [category, setCategory] = useState('');
+const CreateTask = () => {
+    const [userData, setUserData] = useContext(AuthContext);
 
-    const [task, setTask] = useState({});
+    const [taskTitle, setTaskTitle] = useState("");
+    const [taskDescription, setTaskDescription] = useState("");
+    const [taskDate, setTaskDate] = useState("");
+    const [assignTo, setAssignTo] = useState(""); // Corrected variable name
+    const [category, setCategory] = useState("");
 
-    const submitHandler = (e: React.FormEvent) => {
+    const submitHandler = (e) => {
         e.preventDefault();
-        console.log(`Task Details - Title: ${taskTitle}, Description: ${taskDescription}, Date: ${taskDate}, Assigned To: ${asignTo}, Category: ${category}`);
-        setTask({ taskTitle, taskDescription, taskDate, category, active: false, newTask: true, failed: true, completed: false });
+
+        const newTask = {
+            taskTitle,
+            taskDescription,
+            taskDate,
+            category,
+            active: false,
+            newTask: true,
+            failed: false,
+            completed: false,
+        };
+
+        if (Array.isArray(userData)) {
+            const updatedData = userData.map((user) => {
+                if (user.firstName === assignTo) {
+                    return {
+                        ...user,
+                        tasks: [...(user.tasks || []), newTask],
+                        taskCounts: {
+                            ...user.taskCounts,
+                            newTask: (user.taskCounts?.newTask || 0) + 1,
+                        },
+                    };
+                }
+                return user;
+            });
+
+            setUserData(updatedData);
+            console.log(updatedData);
+        } else {
+            alert("Invalid user data.");
+        }
+
+        // Reset form fields
+        setTaskTitle("");
+        setTaskDescription("");
+        setTaskDate("");
+        setAssignTo("");
+        setCategory("");
     };
 
     return (
         <div>
             <div className="p-5 bg-[#1c1c1c] mt-7 rounded">
                 <form
-                    onSubmit={(e) => {
-                        submitHandler(e);
-                    }}
+                    onSubmit={submitHandler}
                     className="flex flex-wrap w-full items-start justify-between"
                 >
                     <div className="w-1/2">
@@ -50,8 +86,8 @@ const CreateTask: React.FC = () => {
                         <div>
                             <h3 className="text-sm text-gray-300 mb-0.5">Assign to</h3>
                             <input
-                                value={asignTo}
-                                onChange={(e) => setAsignTo(e.target.value)}
+                                value={assignTo}
+                                onChange={(e) => setAssignTo(e.target.value)}
                                 className="text-sm text-white py-1 px-2 w-4/5 rounded outline-none bg-transparent border-[1px] border-gray-400 mb-4"
                                 type="text"
                                 placeholder="employee name"

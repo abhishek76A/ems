@@ -5,16 +5,15 @@ import AllTask from "../other/AllTask.tsx";
 
 
 
-const AdminDashboard: React.FC = () => {
+const AdminDashboard: React.FC = (props) => {
 
 
     return (
         <div className="p-20 bg-black h-screen w-full p-7 ">
-            <Header/>
+            <Header changeUser={props.changeUser} />
             <CreateTask/>
             <AllTask/>
         </div>
-
 
     );
 };
