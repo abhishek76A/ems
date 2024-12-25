@@ -7,7 +7,7 @@ interface LoginProps {
 const Login: React.FC<LoginProps> = ({ handleLogin }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-
+    const [showPassword, setShowPassword] = useState(false);
 
     const submitHandler = (e: React.FormEvent) => {
         e.preventDefault();
@@ -34,14 +34,23 @@ const Login: React.FC<LoginProps> = ({ handleLogin }) => {
                         />
                     </div>
                     <div className="mb-6">
-                        <input
-                            type="password"
-                            id="password"
-                            className="border border-emerald-600 p-2 w-full rounded-3xl focus:ring-2 text-white bg-black"
-                            placeholder="Enter your Password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                        />
+                        <div className="relative">
+                            <input
+                                type={showPassword ? 'text' : 'password'}
+                                id="password"
+                                className="border border-emerald-600 p-2 w-full rounded-3xl focus:ring-2 text-white bg-black"
+                                placeholder="Enter your Password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                            />
+                            <button
+                                type="button"
+                                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-sm text-emerald-600"
+                                onClick={() => setShowPassword((prev) => !prev)}
+                            >
+                                {showPassword ? 'Hide' : 'Show'}
+                            </button>
+                        </div>
                     </div>
                     <button
                         type="submit"

@@ -1,6 +1,6 @@
 import React from "react";
 
-// Define the type for the task data
+
 interface TaskData {
     title: string;
     category: string;

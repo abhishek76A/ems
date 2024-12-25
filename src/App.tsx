@@ -2,8 +2,6 @@ import React, {useContext, useEffect, useState} from "react";
 import EmployeeDashboard from "./component/Dashboard/EmployeeDashboard.tsx";
 import Login from "./component/Auth/Login.tsx";
 import AdminDashboard from "./component/Dashboard/AdminDashboard.tsx";
-import {getLocalStorage, setLocalStorage} from "./utils/localStorage.tsx";
-import employeeDashboard from "./component/Dashboard/EmployeeDashboard.tsx";
 import {AuthContext} from "./context/AuthProvider.tsx";
 
 const App =() => {
@@ -11,7 +9,6 @@ const App =() => {
     const [user, setUser] = useState('')
     const [loggedInUserData, setLoggedInUserData] = useState(null);
     const [userData,setUserData] = useContext(AuthContext)
-
     useEffect(() => {
         const loggedInUser = localStorage.getItem("loggedInUser")
 

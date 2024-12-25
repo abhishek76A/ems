@@ -6,14 +6,13 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = (props) => {
-    // Check if user data exists and set username
+
     const username = props.data ? props.data.firstName : "Admin";
 
     const logOutUser = () => {
         localStorage.setItem("loggedInUser", "");
         console.log(props.changeUser);
-        props.changeUser(""); // Reset user state
-        // window.location.reload(); // Uncomment if you want to reload the page after logging out
+        props.changeUser("");
     };
 
     return (
